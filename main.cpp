@@ -30,3 +30,19 @@ bool areEqual(const std::vector<int>& A, const std::vector<int>& B) {
 	return true; 
 }
 
+void bubbleSort(int arr[], int indArr[], int max) {
+	int i, j;
+	bool swapped;
+	for (i = 0; i < max - 1; i++) {
+		swapped = false;
+		for (j = 0; j < max - i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				std::swap(arr[j], arr[j + 1]);
+				std::swap(indArr[j], indArr[j + 1]);
+				swapped = true;
+			}
+		}
+		if (!swapped) break;
+	}
+}
+
