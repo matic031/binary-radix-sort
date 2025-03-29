@@ -21,3 +21,12 @@ void outFile(std::vector<int>& vec, unsigned int velikost) {
 	}
 }
 
+bool areEqual(const std::vector<int>& A, const std::vector<int>& B) {
+	for (size_t i = 0; i < A.size(); ++i) {
+		if (A[i] != B[i]) {
+			return false;
+		}
+	}
+	return true; 
+}
+
