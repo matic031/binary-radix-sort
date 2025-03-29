@@ -46,3 +46,41 @@ void bubbleSort(int arr[], int indArr[], int max) {
 	}
 }
 
+int main(int argc, const char* argv[]) {
+	std::vector<int> A;
+	if (argc < 2) return 0;
+	if (!readFile(A, argv[2])) return 0;
+
+	if (argv[1][0] == '0') {
+		int k = 0;
+		std::vector<int> B;
+
+		while (k < 8) {
+			int* D = new int[A.size()];
+			int* indeksi = new int[A.size()];
+
+			for (int i = 0; i < A.size(); i++) {
+				D[i] = ((A[i] >> k) & 1);
+				indeksi[i] = i;
+			}
+
+			bubbleSort(D, indeksi, A.size());
+
+			for (int i = 0; i < A.size(); i++) {
+				B.push_back(A[indeksi[i]]);
+			}
+
+			if (areEqual(A, B)) break;
+
+			std::swap(A, B);
+			B.clear();
+			delete[] D;
+			delete[] indeksi;
+			k++;
+		}
+		outFile(A, A.size());
+	} else {
+		printf("Your input was incorrect!");
+	}
+}
+
